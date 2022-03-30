@@ -2,6 +2,11 @@
 
 class DBController
 {
+//    // Database Connection Properties
+//     protected $host = 'sql305.ultihost.net';
+//     protected $user = 'ufhne_31408048';
+//     protected $password = 'UjaBw08D';
+//     protected $database = "ufhne_31408048_ufhne_31408048_XXX";
    // Database Connection Properties
     protected $host = 'localhost';
     protected $user = 'root';

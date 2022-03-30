@@ -50,51 +50,62 @@ class Cart
         }
     }
 
-    // // delete cart item using cart item id
-    // public function deleteCart($item_id = null, $table = 'cart'){
-    //     if($item_id != null){
-    //         $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
-    //         if($result){
-    //             header("Location:" . $_SERVER['PHP_SELF']);
-    //         }
-    //         return $result;
-    //     }
-    // }
+    // delete cart item using cart item id
+    public function deleteCart($item_id = null, $table = 'cart'){
+        if($item_id != null){
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
+            if($result){
+                header("Location:" . $_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
+       // delete cart item using cart item id
+    public function deleteWish($item_id = null, $table = 'wishlist'){
+        if($item_id != null){
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
+            if($result){
+                header("Location:" . $_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
 
-    // // calculate sub total
-    // public function getSum($arr){
-    //     if(isset($arr)){
-    //         $sum = 0;
-    //         foreach ($arr as $item){
-    //             $sum += floatval($item[0]);
-    //         }
-    //         return sprintf('%.2f' , $sum);
-    //     }
-    // }
+    // calculate sub total
+    public function getSum($arr){
+        if(isset($arr)){
+            $sum = 0;
+            foreach ($arr as $item){
+                $sum += floatval($item[0]);
+            }
+            return sprintf('%.2f' , $sum);
+        }
+    }
 
-    // // get item_it of shopping cart list
-    // public function getCartId($cartArray = null, $key = "item_id"){
-    //     if ($cartArray != null){
-    //         $cart_id = array_map(function ($value) use($key){
-    //             return $value[$key];
-    //         }, $cartArray);
-    //         return $cart_id;
-    //     }
-    // }
+    // get item_it of shopping cart list
+    public function getCartId($cartArray = null, $key = "item_id"){
+        if ($cartArray != null){
+            $cart_id = array_map(function ($value) use($key){
+                return $value[$key];
+            }, $cartArray);
+            return $cart_id;
+        }
+    }
 
-    // // Save for later
-    // public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "cart"){
-    //     if ($item_id != null){
-    //         $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id={$item_id};";
-    //         $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
+     // Save for later
+    public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "cart"){
+        if ($item_id != null){
+            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id={$item_id};";
+            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
 
-    //         // execute multiple query
-    //         $result = $this->db->con->multi_query($query);
+            // execute multiple query
+            $result = $this->db->con->multi_query($query);
 
-    //         if($result){
-    //             header("Location :" . $_SERVER['PHP_SELF']);
-    //         }
-    //         return $result;
-    //     }
-    // }
+            if($result){
+                header("Location :" . $_SERVER['PHP_SELF']);
+            }
+            return $result;
+        }
+    }
+
 }

@@ -1,27 +1,28 @@
-<!-- Header -->
 <?php
-  //include header.php file
-  include('header.php')
+ob_start();
+// include header.php file
+include ('header.php');
 ?>
-<!-- !Header -->
 
-<!-- Shopping cart section -->
 <?php
-  //include shopping-cart,php file
-  include('Template/shopping-cart.php')
-?>
-<!-- !Shopping cart section -->
 
-<!-- New Arts -->
-<?php
-//include new-arts.php file
-include('Template/new-arts.php')
-?>
-<!-- !New Arts -->
+    /*  include cart items if it is not empty */
+        count($product->getData('cart')) ? include ('Template/shopping-cart.php') :  include ('Template/notFound/shopping-cart_notFound.php');
+    /*  include cart items if it is not empty */
 
-<!-- Footer -->
-<?php
-//include footer.php file
-include('footer.php')
+        /*  include top sale section */
+        count($product->getData('wishlist')) ? include ('Template/wishlist.php') :  include ('Template/notFound/wishlist_notFound.php');
+        /*  include top sale section */
+
+
+    /*  include top sale section */
+        include ('Template/new-arts.php');
+    /*  include top sale section */
+
 ?>
-<!-- !Footer -->
+
+<?php
+// include footer.php file
+include ('footer.php');
+?>
+
